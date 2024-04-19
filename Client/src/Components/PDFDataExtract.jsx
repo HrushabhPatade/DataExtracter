@@ -30,7 +30,9 @@ const PDFDataExtract = () => {
     console.log(prompt);
 
     const result = await model.generateContent(prompt);
-    const cleanedResponse = JSON.parse(result.response.text().replace(/(\bjson\b|`)/gi, ""));
+    const cleanedResponse = JSON.parse(
+      result.response.text().replace(/(\bjson\b|`)/gi, "")
+    );
     setFinalAns(cleanedResponse);
   };
 
@@ -82,57 +84,66 @@ const PDFDataExtract = () => {
       console.error("No JSON data found to copy.");
     }
   };
- 
-
 
   return (
     <>
-    <Navbar/>
-    <div className="jsonData flex flex-row">
-    <div className="w-full  items-center justify-center content-center p-4 mt-3">
-      <h1 className="text-center font-bold text-2xl mb-3">DATA IN JSON FORMAT</h1>
-      <input type="file" accept="application/pdf" className="" onChange={extractText} />
-      <div className="codeSnippet w-full h-auto border bg-black ">
-        <div className="copyButton text-white flex justify-between bg-blue-200 p-3 top-0 ">
-          <h1 className="text-black font-bold">JSON</h1>
-          
-          <button
-            className="text-black font-bold"
-           onClick={copyJsonToClipboard}
-          >
-            Copy
-          </button>
-        </div>
-        
-        <div className="text-blue-400 text-xl">{fileName}</div>
-        <div style={{ whiteSpace: "pre" }} className="jsonDataStream text-white">
-          <JsonEditor
-            className="bg-black w-full"
-            onEdit={onEdit}
-            onDelete={onDelete}
-            onAdd={onAdd}
-            data={finalAns}
-            theme={[
-              "githubDark",
-              {
-                iconEdit: "gray",
-                boolean: {
-                  color: "red",
-                  fontStyle: "italic",
-                  fontWeight: "bold",
-                  fontSize: "80%",
-                  
-                },
-              },
-            ]}
-          />
-         
+      <Navbar />
+      <div className="jsonData flex flex-row">
+        <div className="w-full  items-center justify-center content-center p-4 mt-3">
+          <h1 className="text-center font-bold text-2xl mb-3">
+            DATA IN JSON FORMAT
+          </h1>
+          <div className="text-center">
+            <input
+              type="file"
+              accept="application/pdf"
+              className=""
+              onChange={extractText}
+            />
+            <br />
+          </div>
+          <div className="codeSnippet w-full h-auto border bg-black ">
+            <div className="copyButton text-white flex justify-between bg-blue-200 p-3 top-0 ">
+              <h1 className="text-black font-bold">JSON</h1>
+
+              <button
+                className="text-black font-bold"
+                onClick={copyJsonToClipboard}
+              >
+                Copy
+              </button>
+            </div>
+
+            <div className="text-blue-400 text-xl">{fileName}</div>
+            <div
+              style={{ whiteSpace: "pre" }}
+              className="jsonDataStream text-white"
+            >
+              <JsonEditor
+                className="bg-black w-full"
+                onEdit={onEdit}
+                onDelete={onDelete}
+                onAdd={onAdd}
+                data={finalAns}
+                theme={[
+                  "githubDark",
+                  {
+                    iconEdit: "gray",
+                    boolean: {
+                      color: "red",
+                      fontStyle: "italic",
+                      fontWeight: "bold",
+                      fontSize: "80%",
+                    },
+                  },
+                ]}
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</>
-);
+    </>
+  );
 };
 
 export default PDFDataExtract;
