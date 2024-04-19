@@ -241,14 +241,14 @@ const Navbar = () => {
         >
           <Link to="/"
            
-            href="#"
+           
             className="py-2 text-xl"
             onClick={toggleMenu}
           >
             Home
           </Link>
 
-          <Link to="/pdfData" href="#" className="py-2 text-xl" onClick={toggleMenu}>
+          <Link to="/pdfData"  className="py-2 text-xl" onClick={toggleMenu}>
             Larger Document
           </Link>
           <a  onClick={startTour} href="#" className="py-2 text-xl" >
