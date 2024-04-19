@@ -251,7 +251,7 @@ const Navbar = () => {
           <Link to="/pdfData"  className="py-2 text-xl" onClick={toggleMenu}>
             Larger Document
           </Link>
-          <a  onClick={startTour} href="#" className="py-2 text-xl" >
+          <a  href="#" className="py-2 text-xl" >
             Tour
           </a>
           <a href="#" className="py-2 text-xl" onClick={toggleMenu}>
