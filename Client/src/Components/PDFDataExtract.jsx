@@ -87,6 +87,7 @@ const PDFDataExtract = () => {
 
   return (
     <>
+    <Navbar/>
     <div className="jsonData flex flex-row">
     <div className="w-full  items-center justify-center content-center p-4 mt-3">
       <h1 className="text-center font-bold text-2xl mb-3">DATA IN JSON FORMAT</h1>
